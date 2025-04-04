@@ -1,11 +1,11 @@
 node {
     stage('"Download git repository"') {
-         git branch: 'dev', url: 'https://github.com/clouddevopseng/new-proj-k.git'
+         git branch: 'qa', url: 'https://github.com/clouddevopseng/new-proj-k.git'
      }
      stage('"Covert Artifacts"') {
     sh 'mvn package'
      }
      stage('"Deployment in Environment"') {
-    deploy adapters: [tomcat9(credentialsId: 'a242f5af-1a2c-4772-b116-cbc1fd0921bb', path: '', url: 'http://172.31.4.208:8080')], contextPath: '/dev-env', war: '**/*.war'
+    deploy adapters: [tomcat9(credentialsId: 'ec5a0d55-fcbc-456a-9250-4efe5a41623b', path: '', url: 'http://172.31.7.27:8080')], contextPath: '/qa-env', war: '**/*.war'
      }
 }
